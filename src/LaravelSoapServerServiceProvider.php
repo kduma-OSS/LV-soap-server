@@ -1,6 +1,6 @@
 <?php
 
-namespace Kduma\SoapServer;
+namespace KDuma\SoapServer;
 
 use Illuminate\Support\ServiceProvider;
 

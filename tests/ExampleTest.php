@@ -1,6 +1,6 @@
 <?php
 
-namespace Kduma\SoapServer\Tests;
+namespace KDuma\SoapServer\Tests;
 
 use Orchestra\Testbench\TestCase;
 use Kduma\SoapServer\LaravelSoapServerServiceProvider;
