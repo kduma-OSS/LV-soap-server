@@ -16,8 +16,8 @@
         }
     ],
     "require": {
-        "php": "^7.4",
-        "laminas/laminas-soap": "^2.8",
+        "php": "^7.4|^8.0",
+        "laminas/laminas-soap": "^2.9",
         "ext-soap": "*"
     },
     "require-dev": {
