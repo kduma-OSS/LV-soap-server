@@ -1,5 +1,9 @@
 # Laravel SOAP Server
 
+[![Latest Stable Version](https://poser.pugx.org/kduma/laravel-soap-server/v/stable.svg)](https://packagist.org/packages/kduma/laravel-soap-server)
+[![Total Downloads](https://poser.pugx.org/kduma/laravel-soap-server/downloads.svg)](https://packagist.org/packages/kduma/laravel-soap-server)
+[![License](https://poser.pugx.org/kduma/laravel-soap-server/license.svg)](https://packagist.org/packages/kduma/laravel-soap-server)
+
 Wrapper for creating SOAP web service servers in Laravel using Laminas/Soap.
 
 ## Requirements
