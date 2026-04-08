@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace KDuma\SoapServer;
 
@@ -7,6 +8,7 @@ use SoapFault;
 use Laminas\Soap\Wsdl;
 use Laminas\Soap\Server;
 use Laminas\Soap\AutoDiscover;
+use Illuminate\Http\Response;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Contracts\Container\Container;
 use Laminas\Soap\Server\DocumentLiteralWrapper;
@@ -111,7 +113,7 @@ abstract class AbstractSoapServerController extends BaseController
         return config('soap-server.wsdl_formatting_enabled');
     }
 
-    public function wsdlProvider(ResponseFactory $responseFactory)
+    public function wsdlProvider(ResponseFactory $responseFactory): Response
     {
         $this->disableSoapCacheWhenNeeded();
 
@@ -150,7 +152,7 @@ abstract class AbstractSoapServerController extends BaseController
         return $responseFactory->make($dom->saveXML(), 200, $this->getWsdlHeaders());
     }
 
-    public function soapServer(Container $container, ResponseFactory $responseFactory)
+    public function soapServer(Container $container, ResponseFactory $responseFactory): Response
     {
         $this->disableSoapCacheWhenNeeded();
 
@@ -185,12 +187,12 @@ abstract class AbstractSoapServerController extends BaseController
      *
      * @return string
      */
-    protected static function serverFault(\Exception $exception)
+    protected static function serverFault(\Exception $exception): string
     {
         report($exception);
 
         $faultcode = 'SOAP-ENV:Server';
-        $faultstring = $exception->getMessage();
+        $faultstring = htmlspecialchars($exception->getMessage(), ENT_XML1, 'UTF-8');
 
         return <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
