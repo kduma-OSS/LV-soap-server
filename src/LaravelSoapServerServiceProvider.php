@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KDuma\SoapServer;
 
 use Illuminate\Support\ServiceProvider;
