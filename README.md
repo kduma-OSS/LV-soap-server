@@ -7,6 +7,12 @@
 
 Laravel SOAP service server
 
+## Requirements
+
+- PHP `^8.3`
+- Laravel `^12.0 || ^13.0`
+- laminas/laminas-soap `^2.11 || ^3.0`
+
 ## Installation
 
 You can install the package via composer:
