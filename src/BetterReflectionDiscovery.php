@@ -18,7 +18,7 @@ class BetterReflectionDiscovery implements DiscoveryStrategyInterface
      * @param  AbstractFunction $function
      * @return string
      */
-    public function getFunctionDocumentation(AbstractFunction $function)
+    public function getFunctionDocumentation(AbstractFunction $function): string
     {
         return $function->getDescription();
     }
@@ -29,7 +29,7 @@ class BetterReflectionDiscovery implements DiscoveryStrategyInterface
      * @param  ReflectionParameter $param
      * @return string
      */
-    public function getFunctionParameterType(ReflectionParameter $param)
+    public function getFunctionParameterType(ReflectionParameter $param): string
     {
         /** @var \ReflectionParameter $reflection */
         $reflection = $this->getProtectedValue($param, ReflectionParameter::class);
@@ -51,7 +51,7 @@ class BetterReflectionDiscovery implements DiscoveryStrategyInterface
      * @param  Prototype        $prototype
      * @return string
      */
-    public function getFunctionReturnType(AbstractFunction $function, Prototype $prototype)
+    public function getFunctionReturnType(AbstractFunction $function, Prototype $prototype): string
     {
         /** @var \ReflectionFunctionAbstract $reflection */
         $reflection = $this->getProtectedValue($function, AbstractFunction::class);
@@ -73,9 +73,9 @@ class BetterReflectionDiscovery implements DiscoveryStrategyInterface
      * @param  Prototype        $prototype
      * @return bool
      */
-    public function isFunctionOneWay(AbstractFunction $function, Prototype $prototype)
+    public function isFunctionOneWay(AbstractFunction $function, Prototype $prototype): bool
     {
-        return $this->getFunctionReturnType($function, $prototype) == 'void';
+        return $this->getFunctionReturnType($function, $prototype) === 'void';
     }
 
     /**
@@ -85,7 +85,7 @@ class BetterReflectionDiscovery implements DiscoveryStrategyInterface
      *
      * @return object
      */
-    protected function getProtectedValue($param, string $class)
+    protected function getProtectedValue(object $param, string $class): object
     {
         $reflectionProperty = new \ReflectionProperty($class, 'reflection');
         $reflectionProperty->setAccessible(true);
