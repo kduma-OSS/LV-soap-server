@@ -192,7 +192,7 @@ abstract class AbstractSoapServerController extends BaseController
         report($exception);
 
         $faultcode = 'SOAP-ENV:Server';
-        $faultstring = $exception->getMessage();
+        $faultstring = htmlspecialchars($exception->getMessage(), ENT_XML1, 'UTF-8');
 
         return <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
